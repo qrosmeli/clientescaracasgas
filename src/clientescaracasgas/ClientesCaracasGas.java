@@ -1,18 +1,34 @@
 package clientescaracasgas;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.awt.Component;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class ClientesCaracasGas extends javax.swing.JFrame {
 
 	public ClientesCaracasGas() throws ClassNotFoundException, SQLException {
 		initComponents();
+		this.setLocationRelativeTo(null);
+		jTable1.getColumnModel().getColumn(0).setMaxWidth(27);
+		jTable1.getColumnModel().getColumn(5).setMaxWidth(40);
+		jTable1.getColumnModel().getColumn(6).setMaxWidth(40);
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer(){
+		  @Override
+		  public Component getTableCellRendererComponent(JTable arg0,Object arg1, boolean arg2, boolean arg3, int arg4, int arg5) {
+			Component tableCellRendererComponent = super.getTableCellRendererComponent(arg0, arg1, arg2, arg3, arg4, arg5);
+			int align = DefaultTableCellRenderer.CENTER;
+			((DefaultTableCellRenderer)tableCellRendererComponent).setHorizontalAlignment(align);
+			return tableCellRendererComponent;
+		  }
+		};
+		jTable1.getColumnModel().getColumn(0).setCellRenderer(renderer);
+		jTable1.getColumnModel().getColumn(5).setCellRenderer(renderer);
+		jTable1.getColumnModel().getColumn(6).setCellRenderer(renderer);
 		fillTable();   
 	}
 	
@@ -43,28 +59,28 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "CI", "Nombre", "Nº de Contrato", "Fecha de Contrato", "Tipo de Bombona", "Zona", "Dirección"
+                "ID", "CI", "Nombre", "Nº de Contrato", "Fecha de Contrato", "Tipo", "Zona", "Dirección"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -77,6 +93,7 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
         });
         jTable1.setRowHeight(20);
         jTable1.setRowMargin(5);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -86,6 +103,7 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setResizable(false);
             jTable1.getColumnModel().getColumn(5).setResizable(false);
             jTable1.getColumnModel().getColumn(6).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
         }
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
@@ -167,13 +185,19 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
-	  ModificarCliente md = new ModificarCliente(true, -1);
-	  md.setVisible(true);
+	ModificarCliente md = new ModificarCliente(true, -1, this);
+	md.setVisible(true);
   }//GEN-LAST:event_nuevoActionPerformed
 
   private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-		ModificarCliente md = new ModificarCliente(false, 0);
-		md.setVisible(true);
+	int row = jTable1.getSelectedRow();
+	if(row == -1) {
+	  JOptionPane.showMessageDialog(null,"Seleccione un cliente.","Error",JOptionPane.ERROR_MESSAGE);
+	  return;
+	}
+	int idx = Integer.parseInt(jTable1.getModel().getValueAt(row, 0).toString());
+	ModificarCliente md = new ModificarCliente(false, idx, this);
+	md.setVisible(true);
   }//GEN-LAST:event_modificarActionPerformed
 
 	/**
@@ -204,13 +228,13 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
         //</editor-fold>
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-                            try {
-                                new ClientesCaracasGas().setVisible(true);
-                            } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (SQLException ex) {
-                                Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+				try {
+					new ClientesCaracasGas().setVisible(true);
+				} catch (ClassNotFoundException ex) {
+					Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+				} catch (SQLException ex) {
+					Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+				}
 			}
 		});
 	}
