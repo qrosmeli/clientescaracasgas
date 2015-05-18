@@ -1,9 +1,18 @@
 package clientescaracasgas;
 
+import javax.swing.table.DefaultTableModel;
+
 public class ClientesCaracasGas extends javax.swing.JFrame {
 
 	public ClientesCaracasGas() {
 		initComponents();
+		fillTable();
+	}
+	
+	public void fillTable() {
+		DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+		while(model.getRowCount() > 0) model.removeRow(0);
+		ManejadorBD.readDB(model);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -152,11 +161,13 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
-
+	  ModificarCliente md = new ModificarCliente(true, -1);
+	  md.setVisible(true);
   }//GEN-LAST:event_nuevoActionPerformed
 
   private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-		ModificarCliente modificarCliente = new ModificarCliente();
+		ModificarCliente md = new ModificarCliente(false, 0);
+		md.setVisible(true);
   }//GEN-LAST:event_modificarActionPerformed
 
 	/**
