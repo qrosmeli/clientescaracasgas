@@ -1,15 +1,22 @@
 package clientescaracasgas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class ClientesCaracasGas extends javax.swing.JFrame {
 
-	public ClientesCaracasGas() {
+	public ClientesCaracasGas() throws ClassNotFoundException, SQLException {
 		initComponents();
-		fillTable();
+		fillTable();   
 	}
 	
-	public void fillTable() {
+	public void fillTable() throws ClassNotFoundException, SQLException {
 		DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 		while(model.getRowCount() > 0) model.removeRow(0);
 		ManejadorBD.readDB(model);
@@ -172,7 +179,7 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 	/**
 	 * @param args the command line arguments
 	 */
-	public static void main(String args[]) {
+	public static void main(String args[]) throws ClassNotFoundException, SQLException {
 		/* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -180,7 +187,7 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 		 */
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Metal".equals(info.getName())) {
+				if ("Windows".equals(info.getName())) {
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
@@ -195,11 +202,15 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(ClientesCaracasGas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
         //</editor-fold>
-
-		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new ClientesCaracasGas().setVisible(true);
+                            try {
+                                new ClientesCaracasGas().setVisible(true);
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 			}
 		});
 	}
