@@ -21,8 +21,7 @@ public class ManejadorBD {
             while (rset.next()){
                 System.out.println(rset.getString(1)+ " " + rset.getString(2));
                 model.addRow(new Object[]{rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(8), rset.getString(5), rset.getString(6), rset.getString(7)});
-            }
-            
+            }   
         }
 	
 	public static void getClient(ModificarCliente md, int id) {
