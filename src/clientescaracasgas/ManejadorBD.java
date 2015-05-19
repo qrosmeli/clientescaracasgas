@@ -102,6 +102,7 @@ public class ManejadorBD {
 		}
 		fileWriter.flush();
 		fileWriter.close();
+                JOptionPane.showMessageDialog(null,"Datos exportados exitosamente","Informacion",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public static void importDB(String filename) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException{
