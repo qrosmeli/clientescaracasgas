@@ -123,7 +123,7 @@ public class ModificarCliente extends javax.swing.JFrame {
 
     jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
-    jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V - ", "E - " }));
+    jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V-", "E-" }));
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);

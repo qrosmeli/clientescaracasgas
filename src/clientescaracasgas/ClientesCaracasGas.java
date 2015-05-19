@@ -1,7 +1,11 @@
 package clientescaracasgas;
 
 import java.awt.Component;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -44,155 +48,160 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 	}
 
 	@SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+  // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+  private void initComponents() {
 
-        dateChooserPanel2 = new datechooser.beans.DateChooserPanel();
-        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        nuevo = new javax.swing.JButton();
-        modificar = new javax.swing.JButton();
-        eliminar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        exportar = new javax.swing.JButton();
-        importar = new javax.swing.JButton();
+    dateChooserPanel2 = new datechooser.beans.DateChooserPanel();
+    dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
+    jScrollPane1 = new javax.swing.JScrollPane();
+    jTable1 = new javax.swing.JTable();
+    jLabel2 = new javax.swing.JLabel();
+    nuevo = new javax.swing.JButton();
+    modificar = new javax.swing.JButton();
+    eliminar = new javax.swing.JButton();
+    jSeparator1 = new javax.swing.JSeparator();
+    exportar = new javax.swing.JButton();
+    importar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Clientes Caracas Gas");
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setTitle("Clientes Caracas Gas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "CI", "Nombre", "Nº de Contrato", "Fecha de Contrato", "Tipo", "Zona", "Dirección"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
+    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+      new Object [][] {
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null},
+        {null, null, null, null, null, null, null, null}
+      },
+      new String [] {
+        "ID", "CI", "Nombre", "Nº de Contrato", "Fecha de Contrato", "Tipo", "Zona", "Dirección"
+      }
+    ) {
+      Class[] types = new Class [] {
+        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+      };
+      boolean[] canEdit = new boolean [] {
+        false, false, false, false, false, false, false, false
+      };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+      public Class getColumnClass(int columnIndex) {
+        return types [columnIndex];
+      }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setRowHeight(20);
-        jTable1.setRowMargin(5);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(7).setResizable(false);
-        }
+      public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return canEdit [columnIndex];
+      }
+    });
+    jTable1.setRowHeight(20);
+    jTable1.setRowMargin(5);
+    jTable1.getTableHeader().setReorderingAllowed(false);
+    jScrollPane1.setViewportView(jTable1);
+    if (jTable1.getColumnModel().getColumnCount() > 0) {
+      jTable1.getColumnModel().getColumn(0).setResizable(false);
+      jTable1.getColumnModel().getColumn(1).setResizable(false);
+      jTable1.getColumnModel().getColumn(2).setResizable(false);
+      jTable1.getColumnModel().getColumn(3).setResizable(false);
+      jTable1.getColumnModel().getColumn(4).setResizable(false);
+      jTable1.getColumnModel().getColumn(5).setResizable(false);
+      jTable1.getColumnModel().getColumn(6).setResizable(false);
+      jTable1.getColumnModel().getColumn(7).setResizable(false);
+    }
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel2.setText("Sistema para el control de clientes de Caracas Gas");
+    jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+    jLabel2.setText("Sistema para el control de clientes de Caracas Gas");
 
-        nuevo.setText("Nuevo Cliente");
-        nuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevoActionPerformed(evt);
-            }
-        });
+    nuevo.setText("Nuevo Cliente");
+    nuevo.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        nuevoActionPerformed(evt);
+      }
+    });
 
-        modificar.setText("Modificar Cliente");
-        modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
-            }
-        });
+    modificar.setText("Modificar Cliente");
+    modificar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        modificarActionPerformed(evt);
+      }
+    });
 
-        eliminar.setText("Eliminar Cliente");
-        eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarActionPerformed(evt);
-            }
-        });
+    eliminar.setText("Eliminar Cliente");
+    eliminar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        eliminarActionPerformed(evt);
+      }
+    });
 
-        exportar.setText("Exportar Clientes");
+    exportar.setText("Exportar Clientes");
+    exportar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        exportarActionPerformed(evt);
+      }
+    });
 
-        importar.setText("Importar Clientes");
+    importar.setText("Importar Clientes");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jSeparator1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(importar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(exportar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(layout.createSequentialGroup()
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addGap(20, 20, 20)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eliminar)
-                    .addComponent(modificar)
-                    .addComponent(nuevo))
+                .addGap(0, 0, Short.MAX_VALUE))
+              .addComponent(jSeparator1)))
+          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                  .addComponent(importar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addGroup(layout.createSequentialGroup()
+                    .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(importar)
-                    .addComponent(exportar))
-                .addContainerGap())
-        );
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addComponent(exportar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+        .addContainerGap())
+    );
+    layout.setVerticalGroup(
+      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(layout.createSequentialGroup()
+        .addGap(29, 29, 29)
+        .addComponent(jLabel2)
+        .addGap(29, 29, 29)
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(eliminar)
+          .addComponent(modificar)
+          .addComponent(nuevo))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(importar)
+          .addComponent(exportar))
+        .addContainerGap())
+    );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+    pack();
+  }// </editor-fold>//GEN-END:initComponents
 
   private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
 	ModificarCliente md = new ModificarCliente(true, -1, this);
@@ -226,6 +235,24 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
             Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_eliminarActionPerformed
+
+  private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
+    // TODO add your handling code here:
+	DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
+	Date date = new Date();
+	String filename = "base-de-datos-clientes-caracas-gas-" + dateFormat.format(date) + ".csv";
+	System.out.println(filename);
+	  try {
+		ManejadorBD.exportDB(filename);
+	  } catch (ClassNotFoundException ex) {
+		Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+	  } catch (SQLException ex) {
+		Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+	  } catch (IOException ex) {
+		Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+	  }
+	
+  }//GEN-LAST:event_exportarActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -266,17 +293,17 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 		});
 	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private datechooser.beans.DateChooserDialog dateChooserDialog1;
-    private datechooser.beans.DateChooserPanel dateChooserPanel2;
-    private javax.swing.JButton eliminar;
-    private javax.swing.JButton exportar;
-    private javax.swing.JButton importar;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton modificar;
-    private javax.swing.JButton nuevo;
-    // End of variables declaration//GEN-END:variables
+  // Variables declaration - do not modify//GEN-BEGIN:variables
+  private datechooser.beans.DateChooserDialog dateChooserDialog1;
+  private datechooser.beans.DateChooserPanel dateChooserPanel2;
+  private javax.swing.JButton eliminar;
+  private javax.swing.JButton exportar;
+  private javax.swing.JButton importar;
+  private javax.swing.JLabel jLabel2;
+  private javax.swing.JScrollPane jScrollPane1;
+  private javax.swing.JSeparator jSeparator1;
+  private javax.swing.JTable jTable1;
+  private javax.swing.JButton modificar;
+  private javax.swing.JButton nuevo;
+  // End of variables declaration//GEN-END:variables
 }
