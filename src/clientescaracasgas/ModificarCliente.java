@@ -271,28 +271,33 @@ public class ModificarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		String dt = df.format(jDateChooser2.getDate());
-		String ci = jComboBox3.getSelectedItem().toString() + jTextField6.getText();
-		String name = jTextField7.getText();
-		String numcont = jTextField8.getText();
-		int bomb = Integer.parseInt(jComboBox1.getSelectedItem().toString());
-		int zone = Integer.parseInt(jComboBox2.getSelectedItem().toString());
-		String address = jTextArea2.getText();
-		if(create)
-		  ManejadorBD.insertClient(ci, name, numcont, bomb, zone, dt, address);
-		else  
-		  ManejadorBD.updateClient(idx, ci, name, numcont, bomb, zone, dt, address);
-		
-		try {
-			ccg.fillTable();
-		} catch (ClassNotFoundException ex) {
+		try {                                         
+                    // TODO add your handling code here:
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    String dt = df.format(jDateChooser2.getDate());
+                    String ci = jComboBox3.getSelectedItem().toString() + jTextField6.getText();
+                    String name = jTextField7.getText();
+                    String numcont = jTextField8.getText();
+                    int bomb = Integer.parseInt(jComboBox1.getSelectedItem().toString());
+                    int zone = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+                    String address = jTextArea2.getText();
+                    if(create)
+                        ManejadorBD.insertClient(ci, name, numcont, bomb, zone, dt, address);
+                    else
+                        ManejadorBD.updateClient(idx, ci, name, numcont, bomb, zone, dt, address);
+                    try {
+                        ccg.fillTable();
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(ModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    dispose();
+                } catch (ClassNotFoundException ex) {
 			Logger.getLogger(ModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (SQLException ex) {
 			Logger.getLogger(ModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

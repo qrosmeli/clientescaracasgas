@@ -129,6 +129,11 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
         });
 
         eliminar.setText("Eliminar Cliente");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
 
         exportar.setText("Exportar Clientes");
 
@@ -204,6 +209,23 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 	ModificarCliente md = new ModificarCliente(false, idx, this);
 	md.setVisible(true);
   }//GEN-LAST:event_modificarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        try {
+            int row = jTable1.getSelectedRow();
+            if(row == -1) {
+                JOptionPane.showMessageDialog(null,"Seleccione un cliente.","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int idx = Integer.parseInt(jTable1.getModel().getValueAt(row, 0).toString());
+            ManejadorBD.deleteClient(idx);
+            fillTable();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
 
 	/**
 	 * @param args the command line arguments
