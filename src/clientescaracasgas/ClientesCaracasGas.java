@@ -1,6 +1,7 @@
 package clientescaracasgas;
 
 import java.awt.Component;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -8,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.FileChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -147,6 +150,11 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
     });
 
     importar.setText("Importar Clientes");
+    importar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        importarActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -253,6 +261,26 @@ public class ClientesCaracasGas extends javax.swing.JFrame {
 	  }
 	
   }//GEN-LAST:event_exportarActionPerformed
+
+  private void importarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importarActionPerformed
+    JFileChooser fc = new JFileChooser(".");
+	int ans;
+	ans = fc.showOpenDialog(null);
+	if(ans != JFileChooser.APPROVE_OPTION) {
+		JOptionPane.showMessageDialog(null,"Archivo invalido.","Error",JOptionPane.ERROR_MESSAGE);
+		return;
+	}
+	File aux = fc.getSelectedFile();
+	try {
+	  ManejadorBD.importDB(aux.getPath());
+	} catch (ClassNotFoundException ex) {
+	  Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (SQLException ex) {
+	  Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (IOException ex) {
+	  Logger.getLogger(ClientesCaracasGas.class.getName()).log(Level.SEVERE, null, ex);
+	}
+  }//GEN-LAST:event_importarActionPerformed
 
 	/**
 	 * @param args the command line arguments

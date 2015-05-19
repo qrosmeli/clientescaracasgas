@@ -1,6 +1,9 @@
 package clientescaracasgas;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -95,4 +98,22 @@ public class ManejadorBD {
 		fileWriter.flush();
 		fileWriter.close();
 	}
+	
+	public static void importDB(String filename) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException{
+	  BufferedReader br = null;
+	  String line = "";
+	  String splitBy = ";";
+	  Class.forName("oracle.jdbc.driver.OracleDriver");
+	  Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "CCSGAS", "clientescaracasgas");
+	  Statement d = con.createStatement();
+	  br = new BufferedReader(new FileReader(filename));
+	  line = br.readLine();
+	  int cont = 1;
+	  while ((line = br.readLine()) != null) {
+		  String[] col = line.split(splitBy);
+		  System.out.println("INSERT INTO CLIENTE VALUES(" + col[0] + " ,'" + col[1] + "', '" + col[2] + "', "+ col[3] + ", "+ col[4] + ", " + col[4] + ", '"+ col[5] + "', '"+ col[6] + "')");
+		  //d.executeQuery("INSERT INTO BENEFICIARIOS VALUES(" + col[0] + " ," + Integer.toString(cont) + " ,'" + col[1] + "', '" + col[2] + "', '"+ col[3] + "', '"+ col[4] + "', '"+ col[5] + "')");
+		  cont++;
+	  }
+    }
 }
