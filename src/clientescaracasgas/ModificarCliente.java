@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clientescaracasgas;
 
 import java.sql.SQLException;
@@ -15,7 +10,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author CCCT_LAB
+ * @author Luis Arguello
+ * @author Rosmeli Quintero
  */
 public class ModificarCliente extends javax.swing.JFrame {
 

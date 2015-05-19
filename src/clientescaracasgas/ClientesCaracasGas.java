@@ -9,6 +9,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Luis Arguello
+ * @author Rosmeli Quintero
+ */
 public class ClientesCaracasGas extends javax.swing.JFrame {
 
 	public ClientesCaracasGas() throws ClassNotFoundException, SQLException {

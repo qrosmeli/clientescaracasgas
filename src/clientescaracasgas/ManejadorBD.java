@@ -9,7 +9,8 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author UCV
+ * @author Luis Arguello
+ * @author Rosmeli Quintero
  */
 public class ManejadorBD {
 	public static void readDB(DefaultTableModel model) throws ClassNotFoundException, SQLException {
