@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,6 +58,7 @@ public class ModificarCliente extends javax.swing.JFrame {
 	  }
 	  jTextField6.setText(ci);
 	  jTextField7.setText(name);
+	  if(numcont.equals("-1")) numcont = "";
 	  jTextField8.setText(numcont);
 	  jComboBox1.setSelectedItem(bomb);
 	  jComboBox2.setSelectedItem(zone);
@@ -117,7 +119,7 @@ public class ModificarCliente extends javax.swing.JFrame {
     jLabel13.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
     jLabel13.setText("<titulo>");
 
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "10", "45" }));
+    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "10", "43" }));
 
     jLabel11.setText("Zona:");
 
@@ -274,13 +276,23 @@ public class ModificarCliente extends javax.swing.JFrame {
 		try {                                         
                     // TODO add your handling code here:
                     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                    String dt = df.format(jDateChooser2.getDate());
+					Date d = jDateChooser2.getDate();
+					String dt = "";
+					if(d != null) {
+					  dt = df.format(d);
+					}
                     String ci = jComboBox3.getSelectedItem().toString() + jTextField6.getText();
                     String name = jTextField7.getText();
                     String numcont = jTextField8.getText();
-                    int bomb = Integer.parseInt(jComboBox1.getSelectedItem().toString());
-                    int zone = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+					if(numcont.equals("")) numcont = "-1";
+					String aux = jComboBox1.getSelectedItem().toString();
+					if(aux.equals("Seleccione")) aux = "-1";
+                    int bomb = Integer.parseInt(aux);
+					aux = jComboBox2.getSelectedItem().toString();
+					if(aux.equals("Seleccione")) aux = "-1";
+                    int zone = Integer.parseInt(aux);
                     String address = jTextArea2.getText();
+					System.out.printf("%s %s %s %s %d %d\n", dt, ci, name, numcont, bomb, zone);
                     if(create)
                         ManejadorBD.insertClient(ci, name, numcont, bomb, zone, dt, address);
                     else
@@ -295,8 +307,10 @@ public class ModificarCliente extends javax.swing.JFrame {
                     dispose();
                 } catch (ClassNotFoundException ex) {
 			Logger.getLogger(ModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(null,"Datos invalidos","Error",JOptionPane.ERROR_MESSAGE);
 		} catch (SQLException ex) {
 			Logger.getLogger(ModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(null,"Datos invalidos","Error",JOptionPane.ERROR_MESSAGE);
 		}
     }//GEN-LAST:event_jButton1ActionPerformed
 

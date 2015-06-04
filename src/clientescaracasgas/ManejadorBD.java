@@ -26,9 +26,15 @@ public class ManejadorBD {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "CCSGAS", "clientescaracasgas");
 		Statement stmt = con.createStatement();
-		ResultSet rset = stmt.executeQuery("SELECT * FROM CLIENTE");
+		ResultSet rset = stmt.executeQuery("SELECT * FROM CLIENTE ORDER BY ID DESC");
 		while (rset.next()){
-                    model.addRow(new Object[]{rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(8), rset.getString(5), rset.getString(6), rset.getString(7)});
+					String four = rset.getString(4);
+					if(four.equals("-1")) four = "";
+					String five = rset.getString(5);
+					if(five.equals("-1")) five = "";
+					String six = rset.getString(6);
+					if(six.equals("-1")) six = "";
+                    model.addRow(new Object[]{rset.getString(1), rset.getString(2), rset.getString(3), four, rset.getString(8), five, six, rset.getString(7)});
 		}   
 	}
 	
@@ -49,7 +55,7 @@ public class ManejadorBD {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "CCSGAS", "clientescaracasgas");
 		Statement stmt = con.createStatement();
-		//System.out.println("INSERT INTO CLIENTE VALUES(CLIENTE_ID.NEXTVAL, '" + ci + "', '" + name + "', " + numcont + ", " + bomb + ", " + zone + ", '" + address + "', '" + dt + "')");
+		System.out.println("INSERT INTO CLIENTE VALUES(CLIENTE_ID.NEXTVAL, '" + ci + "', '" + name + "', " + numcont + ", " + bomb + ", " + zone + ", '" + address + "', '" + dt + "')");
 		ResultSet rset = stmt.executeQuery("INSERT INTO CLIENTE VALUES(CLIENTE_ID.NEXTVAL, '" + ci + "', '" + name + "', " + numcont + ", " + bomb + ", " + zone + ", '" + address + "', '" + dt + "')");
 	}
 
